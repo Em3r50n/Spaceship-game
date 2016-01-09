@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NaveController : MonoBehaviour
-{
+public class NaveController : MonoBehaviour {
 
     //CONSTANTES
     public const int vel = 10;
-    public const float maxDist = 1.40f;
+    public const float maxDist = 4.05f;
     //public const float leftMargin = 0.2F;
     //public const float rightMargin = 0.8F;
 
@@ -15,17 +14,16 @@ public class NaveController : MonoBehaviour
 
 
 
-    void Awake()
-    {
+    void Awake() {
         halfScreen = Screen.width / 2.0;
     }
-    void Start()
-    {
+
+    void Start() {
 
     }
 
-    void LateUpdate()
-    {
+    void LateUpdate() {
+
         shipMoving();
 
         //ObjectPosition obj = new ObjectPosition (); 
@@ -33,32 +31,31 @@ public class NaveController : MonoBehaviour
 
 
         //Para fazer teste no computador é só descomentar esse trecho
-        /*
-        if (Input.GetKey ("left"))
-        {
+        
+        if (Input.GetKey ("left")) {
 
-            if (transform.position.x > -maxDist)
-            {
+            if (transform.position.x > -maxDist) {
                 transform.Translate(-vel * Time.deltaTime, 0, 0);
             }
-            if (transform.position.x < -maxDist)
-            {
-                transform.position = new Vector3(-1.4f, 0, 0);
+
+            if (transform.position.x < -maxDist) {
+                transform.position = new Vector3(-maxDist, 0, 0);
             }
+
         }
 
-        if (Input.GetKey ("right"))
-        {
-            if (transform.position.x < maxDist)
-            {
+        if (Input.GetKey ("right")) {
+
+            if (transform.position.x < maxDist) {
                 transform.Translate(vel * Time.deltaTime, 0, 0);
             }
-            if (transform.position.x > maxDist)
-            {
-                transform.position = new Vector3(1.4f, 0, 0);
+
+            if (transform.position.x > maxDist) {
+                transform.position = new Vector3(maxDist, 0, 0);
             }
+
         }
-        */
+        
 
     }
 
@@ -77,28 +74,28 @@ public class NaveController : MonoBehaviour
 
         if (s == 0) {
 
-            if (transform.position.x > -maxDist)
-            {
+            if (transform.position.x > -maxDist) {
                 transform.Translate(Vector3.left * vel * Time.deltaTime);
             }
-            if (transform.position.x < -maxDist)
-            {
-                transform.position = new Vector3(-1.4f, 0, 0);
+
+            if (transform.position.x < -maxDist) {
+                transform.position = new Vector3(-maxDist, 0, 0);
             }
+
         }
 
-        else if (s == 1)
-        {
-            if (transform.position.x < maxDist)
-            {
+        else if (s == 1) {
+
+            if (transform.position.x < maxDist) {
                 transform.Translate(Vector3.right * vel * Time.deltaTime);
             }
+
             if (transform.position.x > maxDist) {
-                transform.position = new Vector3(1.4f, 0, 0);
+                transform.position = new Vector3(maxDist, 0, 0);
             }
+
         }
     }
-
 }
 
 
