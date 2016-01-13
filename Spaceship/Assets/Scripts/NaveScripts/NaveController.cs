@@ -6,16 +6,19 @@ public class NaveController : MonoBehaviour {
     //CONSTANTES
     public const int vel = 10;
     public const float maxDist = 4.05f;
-    //public const float leftMargin = 0.2F;
-    //public const float rightMargin = 0.8F;
+	public Transform tiro;
+	private int frameCount;
 
     //Atributos da Classe
     private double halfScreen;
 
 
 
+
+
     void Awake() {
         halfScreen = Screen.width / 2.0;
+		frameCount = 0;
     }
 
     void Start() {
@@ -24,10 +27,14 @@ public class NaveController : MonoBehaviour {
 
     void LateUpdate() {
 
+		frameCount++;
+
         shipMoving();
 
-        //ObjectPosition obj = new ObjectPosition (); 
-        //transform.position = obj.getPositionDelimited (leftMargin, rightMargin, transform.position);
+		if (frameCount == 15) {
+			frameCount = 0;
+			shoot ();
+		}
 
 
         //Para fazer teste no computador é só descomentar esse trecho
@@ -96,6 +103,12 @@ public class NaveController : MonoBehaviour {
 
         }
     }
+
+	private void shoot() {
+		Vector3 pos = transform.position;
+		pos.z += 0.5F;
+		Instantiate(tiro, pos, transform.rotation);
+	}
 }
 
 
