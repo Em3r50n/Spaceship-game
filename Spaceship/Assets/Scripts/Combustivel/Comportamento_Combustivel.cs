@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Comportamento_Combustivel : MonoBehaviour {
 
-    public float velocidade = 4.0f;
+    public float velocidade = 2.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,7 @@ public class Comportamento_Combustivel : MonoBehaviour {
           Se sim, ele é deletado.
           Se não, continua indo para baixo.
         */
-        if (transform.position.z < -8.5f) {
+        if (transform.position.z < -4f) {
             DestroyObject(gameObject);
         }
 

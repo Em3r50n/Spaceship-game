@@ -4,7 +4,7 @@ using System.Collections;
 public class NaveController : MonoBehaviour {
 
     //CONSTANTES
-    public const int vel = 10;
+    public const int vel = 7;
     public const float maxDist = 4.05f;
 	public Transform tiro;
 	private int frameCount;
@@ -106,8 +106,8 @@ public class NaveController : MonoBehaviour {
 
 	private void shoot() {
 		Vector3 pos = transform.position;
-		pos.z += 0.5F;
-		Instantiate(tiro, pos, transform.rotation);
+		pos.y -= 0.5F;
+		Instantiate(tiro, pos, tiro.transform.rotation);
 	}
 }
 

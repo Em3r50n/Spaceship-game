@@ -12,10 +12,10 @@ public class Tiro : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-	
-		transform.Translate(0, VELOCIADE_TIRO * Time.deltaTime, 0);
 
-		if (transform.position.z >= 9) {
+        transform.Translate(0, 0, VELOCIADE_TIRO * Time.deltaTime);
+
+		if (transform.position.z >= 12) {
 			Destroy(gameObject);
 		}
 
