@@ -107,6 +107,7 @@ public class NaveController : MonoBehaviour {
 	private void shoot() {
 		Vector3 pos = transform.position;
 		pos.y -= 0.5F;
+        pos.z += 0.33f;
 		Instantiate(tiro, pos, tiro.transform.rotation);
 	}
 }

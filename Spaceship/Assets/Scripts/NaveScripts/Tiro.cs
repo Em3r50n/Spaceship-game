@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Tiro : MonoBehaviour {
 
-	public const int VELOCIADE_TIRO = 5;
+	public const int VELOCIADE_TIRO = 8;
 
 	// Use this for initialization
 	void Start () {
