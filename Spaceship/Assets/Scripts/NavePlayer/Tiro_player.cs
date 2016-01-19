@@ -22,4 +22,11 @@ public class Tiro_player : MonoBehaviour {
 		}
 
 	}
+
+	public void OnTriggerEnter (Collider other) {
+
+		if (other.CompareTag ("meteoro")) {
+			Destroy (gameObject);
+		}
+	}
 }
