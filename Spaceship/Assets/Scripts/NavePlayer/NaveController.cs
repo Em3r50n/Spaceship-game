@@ -7,18 +7,15 @@ public class NaveController : MonoBehaviour {
     public const int vel = 7;
     public const float maxDist = 4.05f;
 	public Transform tiro;
-	private int frameCount;
+    public int velocidade_disparo = 15;
+	private int frameCount = 0;
 
     //Atributos da Classe
     private double halfScreen;
 
 
-
-
-
     void Awake() {
         halfScreen = Screen.width / 2.0;
-		frameCount = 0;
     }
 
     void Start() {
@@ -31,7 +28,7 @@ public class NaveController : MonoBehaviour {
 
         shipMoving();
 
-		if (frameCount == 15) {
+		if (frameCount == velocidade_disparo) {
 			frameCount = 0;
 			shoot ();
 		}
@@ -88,7 +85,6 @@ public class NaveController : MonoBehaviour {
             if (transform.position.x < -maxDist) {
                 transform.position = new Vector3(-maxDist, 0, 0);
             }
-
         }
 
         else if (s == 1) {
@@ -106,7 +102,7 @@ public class NaveController : MonoBehaviour {
 
 	private void shoot() {
 		Vector3 pos = transform.position;
-		pos.y -= 0.5F;
+		pos.y -= 0.1F;
         pos.z += 0.33f;
 		Instantiate(tiro, pos, tiro.transform.rotation);
 	}
