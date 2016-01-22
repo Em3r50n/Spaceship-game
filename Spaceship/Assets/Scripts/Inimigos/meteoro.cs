@@ -5,6 +5,7 @@ public class meteoro : MonoBehaviour {
 
 
 	public int vel = 4;
+    private float rotacao = Random.Range(-50.0f, 50.0f);
 	public int vida = 1;
 	public int dano = 1;
 	private Game_Controller gamecontroller;
@@ -24,12 +25,15 @@ public class meteoro : MonoBehaviour {
 			Debug.Log("Não encontrou nenhum Script 'Game_Controller'.");
 		}
 
-
+        transform.Rotate(new Vector3(0, Random.Range(0.0f, 360.0f), 0), Space.World);
 	}
 	
+
 	void LateUpdate () {
-		transform.Translate (0, 0, vel * Time.deltaTime * (-1));
+        transform.Translate(0, 0, vel * Time.deltaTime * (-1), Space.World);
+        transform.Rotate(new Vector3(0, rotacao * Time.deltaTime, 0), Space.World);
 	}
+
 
 	public void OnTriggerEnter (Collider other) {
 
@@ -41,12 +45,13 @@ public class meteoro : MonoBehaviour {
 
 		if (other.CompareTag ("tiro_player")) {
 
+            vida--;
+
 			if (vida == 0) {
 				gamecontroller.Pontuacao (20);
 				Destroy (gameObject);
-			} else {
-				vida--;
 			}
+
 		}
 	}
 }

@@ -5,6 +5,7 @@ public class Gerador_de_meteoros : MonoBehaviour {
 
 	public Transform meteoro;
 	private int frameCount;
+    public int tempo = 60;
 
 	void Awake () {
 		frameCount = 0;
@@ -19,7 +20,7 @@ public class Gerador_de_meteoros : MonoBehaviour {
 
 		frameCount++;
 
-		if (frameCount == 60) {
+		if (frameCount == tempo) {
 			frameCount = 0;
 			instanciarMeteoro ();
 		}
@@ -28,10 +29,7 @@ public class Gerador_de_meteoros : MonoBehaviour {
 
 
 	private void instanciarMeteoro () {
-		Vector3 pos = transform.position;
-		pos.x = Random.Range (-3, 3);
-
-		Instantiate(meteoro, pos, transform.rotation);
+		Instantiate(meteoro, new Vector3(Random.Range (-3.0f, 3.0f),0,14), meteoro.transform.rotation);
 
 	}
 }
