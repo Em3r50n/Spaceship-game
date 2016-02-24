@@ -4,6 +4,7 @@ using System.Collections;
 public class Gerador_de_meteoros : MonoBehaviour {
 
 	public Transform meteoro;
+    public bool gerarMeteoro_habilitado = true;
 	private int frameCount;
     public int tempo = 60;
 
@@ -12,20 +13,26 @@ public class Gerador_de_meteoros : MonoBehaviour {
 	}
 		
 	void Start () {
-		instanciarMeteoro ();
+	
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {
+    void LateUpdate()
+    {
 
-		frameCount++;
 
-		if (frameCount == tempo) {
-			frameCount = 0;
-			instanciarMeteoro ();
-		}
-	
-	}
+        if (gerarMeteoro_habilitado == true)
+        {
+            frameCount++;
+
+            if (frameCount == tempo)
+            {
+                frameCount = 0;
+                instanciarMeteoro();
+            }
+
+        }
+    }
 
 
 	private void instanciarMeteoro () {
